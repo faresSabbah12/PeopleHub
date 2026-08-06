@@ -4,9 +4,17 @@ import App from './App';
 
 import './i18n';
 import './index.css';
+import { ThemeProvider } from './components/theme/ThemeProvider';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <App />
+    <ThemeProvider
+      attribute='class'
+      defaultTheme='system'
+      enableSystem
+      disableTransitionOnChange
+    >
+      <App />
+    </ThemeProvider>
   </React.StrictMode>,
 );
