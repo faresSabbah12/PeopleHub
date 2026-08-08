@@ -1,12 +1,7 @@
-import { Button } from '@/components/ui/button';
-import { useTranslation } from 'react-i18next';
+import { AppLayout } from '@/layouts/AppLayout';
 
-export default function App() {
-  const { t } = useTranslation();
-  return (
-    <div className='flex min-h-screen items-center justify-center'>
-      <Button>PeopleHub</Button>
-      <h1>{t('WELCOME')}</h1>;
-    </div>
-  );
+function App() {
+  return <AppLayout />;
 }
+
+export default App;
