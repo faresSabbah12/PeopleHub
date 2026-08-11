@@ -1,9 +1,7 @@
-import { Button } from '@/components/ui/button';
+import { AppLayout } from '@/layouts/AppLayout';
 
-export default function App() {
-  return (
-    <div className='flex min-h-screen items-center justify-center'>
-      <Button>PeopleHub</Button>
-    </div>
-  );
+function App() {
+  return <AppLayout />;
 }
+
+export default App;
