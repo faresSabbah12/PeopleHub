@@ -9,7 +9,7 @@ import {
 
 export interface AppRoute {
   path: string;
-  label: string;
+  labelKey: string;
   icon?: LucideIcon;
   showInSidebar?: boolean;
   children?: AppRoute[];
@@ -18,31 +18,31 @@ export interface AppRoute {
 export const appRoutes: AppRoute[] = [
   {
     path: '/dashboard',
-    label: 'DASHBOARD',
+    labelKey: 'DASHBOARD',
     icon: LayoutDashboard,
     showInSidebar: true,
   },
   {
     path: '/employees',
-    label: 'EMPLOYEES',
+    labelKey: 'EMPLOYEES',
     icon: Users,
     showInSidebar: true,
   },
   {
     path: '/salaries',
-    label: 'SALARIES',
+    labelKey: 'SALARIES',
     icon: Wallet,
     showInSidebar: true,
   },
   {
     path: '/attendance',
-    label: 'ATTENDANCE',
+    labelKey: 'ATTENDANCE',
     icon: Clock3,
     showInSidebar: true,
   },
   {
     path: '/settings',
-    label: 'SETTINGS',
+    labelKey: 'SETTINGS',
     icon: Settings,
     showInSidebar: true,
   },

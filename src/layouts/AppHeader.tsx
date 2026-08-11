@@ -1,5 +1,6 @@
 import { SidebarTrigger } from '@/components/ui/sidebar';
 import { ThemeToggle } from '@/components/theme/ThemeToggle';
+import { LanguageSwitcher } from '@/components/language/LanguageSwitcher';
 
 export function AppHeader() {
   return (
@@ -7,6 +8,7 @@ export function AppHeader() {
       <SidebarTrigger />
 
       <div className='flex items-center gap-2'>
+        <LanguageSwitcher />
         <ThemeToggle />
       </div>
     </header>

@@ -8,13 +8,16 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from '@/components/ui/sidebar';
+import { useTranslation } from 'react-i18next';
 import { appRoutes } from '@/routes/routes';
 
 export function AppSidebar() {
   const sidebarRoutes = appRoutes.filter((rout) => rout.showInSidebar === true);
+  const { t, i18n } = useTranslation('sideMenu');
+  const isArabic = i18n.language === 'ar';
 
   return (
-    <Sidebar>
+    <Sidebar side={isArabic ? 'right' : 'left'}>
       <SidebarContent>
         <SidebarGroup>
           <SidebarGroupLabel>PeopleHub</SidebarGroupLabel>
@@ -28,7 +31,7 @@ export function AppSidebar() {
                   <SidebarMenuItem key={route.path}>
                     <SidebarMenuButton>
                       {Icon && <Icon />}
-                      <span>{route.label}</span>
+                      <span>{t(route.labelKey)}</span>
                     </SidebarMenuButton>
                   </SidebarMenuItem>
                 );
