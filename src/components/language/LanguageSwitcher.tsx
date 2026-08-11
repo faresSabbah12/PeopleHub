@@ -9,7 +9,7 @@ import { Button } from '../ui/button';
 import { Languages } from 'lucide-react';
 
 export function LanguageSwitcher() {
-  const { i18n } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   const currentLanguage = i18n.language as Language;
 
@@ -25,9 +25,11 @@ export function LanguageSwitcher() {
   return (
     <Button
       variant='ghost'
-      size='sm'
+      size='icon'
       onClick={handleLanguageChange}
-      aria-label='Change language'
+      aria-label={t('LANGUAGE_SWITCH')}
+      title={t('LANGUAGE_SWITCH')}
+      className='w-auto gap-1.5 px-2 text-xs font-medium'
     >
       <Languages />
       {currentLanguage.toUpperCase()}
