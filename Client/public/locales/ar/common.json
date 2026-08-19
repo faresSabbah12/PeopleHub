@@ -1,0 +1,22 @@
+{
+  "WELCOME": "مرحبًا بك في PeopleHub",
+  "HR_MANAGER": "مدير الموارد البشرية",
+  "SEARCH_PLACEHOLDER": "ابحث عن موظف أو طلب…",
+  "NOTIFICATIONS": "الإشعارات",
+  "TOGGLE_SIDEBAR": "إظهار أو إخفاء القائمة",
+  "LANGUAGE_SWITCH": "تغيير اللغة",
+  "THEME_LIGHT": "فاتح",
+  "THEME_DARK": "داكن",
+  "THEME_SYSTEM": "النظام",
+  "THEME_SWITCH_TO": "التبديل إلى المظهر {{theme}}",
+  "STATUS_PRESENT": "حاضر",
+  "STATUS_REMOTE": "عن بُعد",
+  "STATUS_LEAVE": "في إجازة",
+  "STATUS_ABSENT": "غائب",
+  "STATUS_PENDING": "قيد المراجعة",
+  "STATUS_APPROVED": "تمت الموافقة",
+  "STATUS_REJECTED": "مرفوض",
+  "MODULE_PENDING_TITLE": "{{module}} قيد التطوير",
+  "MODULE_PENDING_DESCRIPTION": "هذه الوحدة جزء من خطة تطوير PeopleHub.",
+  "MODULE_PENDING_HINT": "الهيكل العام والمظهر والمكونات المشتركة جاهزة، وستتم إضافة شاشات هذه الوحدة في إصدار لاحق."
+}

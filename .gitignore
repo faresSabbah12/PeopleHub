@@ -1,4 +1,6 @@
+# =========================
 # Logs
+# =========================
 logs
 *.log
 npm-debug.log*
@@ -7,18 +9,38 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-node_modules
-dist
-dist-ssr
+# =========================
+# Frontend / React
+# =========================
+node_modules/
+dist/
+dist-ssr/
+
 *.local
 
-# Editor directories and files
+# =========================
+# .NET / Visual Studio
+# =========================
+.vs/
+**/.vs/
+
+**/bin/
+**/obj/
+
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# =========================
+# Editors
+# =========================
 .vscode/*
 !.vscode/extensions.json
-.idea
+
+.idea/
 .DS_Store
-*.suo
+
 *.ntvs*
 *.njsproj
-*.sln
 *.sw?

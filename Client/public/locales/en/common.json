@@ -1,0 +1,22 @@
+{
+  "WELCOME": "Welcome to PeopleHub",
+  "HR_MANAGER": "HR Manager",
+  "SEARCH_PLACEHOLDER": "Search employees, requests…",
+  "NOTIFICATIONS": "Notifications",
+  "TOGGLE_SIDEBAR": "Toggle sidebar",
+  "LANGUAGE_SWITCH": "Change language",
+  "THEME_LIGHT": "Light",
+  "THEME_DARK": "Dark",
+  "THEME_SYSTEM": "System",
+  "THEME_SWITCH_TO": "Switch to {{theme}} theme",
+  "STATUS_PRESENT": "Present",
+  "STATUS_REMOTE": "Remote",
+  "STATUS_LEAVE": "On leave",
+  "STATUS_ABSENT": "Absent",
+  "STATUS_PENDING": "Pending",
+  "STATUS_APPROVED": "Approved",
+  "STATUS_REJECTED": "Rejected",
+  "MODULE_PENDING_TITLE": "{{module}} is on the way",
+  "MODULE_PENDING_DESCRIPTION": "This module is part of the PeopleHub roadmap.",
+  "MODULE_PENDING_HINT": "The shell, theme and shared components are ready — the module screens will be added in a later release."
+}
