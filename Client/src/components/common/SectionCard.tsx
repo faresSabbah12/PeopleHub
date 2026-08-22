@@ -15,7 +15,7 @@ interface SectionCardProps {
   description?: string;
   /** Header-level action, e.g. a "view all" button. */
   action?: ReactNode;
-  children: ReactNode;
+  children?: ReactNode;
   /** Removes content padding, for edge-to-edge tables and lists. */
   flush?: boolean;
   className?: string;
