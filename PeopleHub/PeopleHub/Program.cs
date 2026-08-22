@@ -16,10 +16,16 @@ namespace PeopleHub
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
-            // Our mock "database" service. Singleton = one shared instance/list
+            // Our mock "database" services. Singleton = one shared instance/list
             // for the whole app's lifetime (in-memory data needs to persist
             // across requests, not be recreated per request like the default).
+            //
+            // Order matters for readability, not for correctness — the container
+            // resolves the graph itself: RequestService needs IEmployeeService,
+            // and AttendanceService needs both.
             builder.Services.AddSingleton<IEmployeeService, EmployeeService>();
+            builder.Services.AddSingleton<IRequestService, RequestService>();
+            builder.Services.AddSingleton<IAttendanceService, AttendanceService>();
 
             // Let the React dev server (Vite, localhost:5173) call this API
             // from the browser.
@@ -41,6 +47,15 @@ namespace PeopleHub
             {
                 app.UseSwagger();
                 app.UseSwaggerUI();
+
+                // Asking for the services here builds all three singletons NOW,
+                // so the ~100k attendance rows are generated during startup
+                // rather than during the first unlucky request — and the check
+                // throws immediately if the generated data is inconsistent.
+                SeedSelfCheck.Verify(
+                    app.Services.GetRequiredService<IEmployeeService>(),
+                    app.Services.GetRequiredService<IAttendanceService>(),
+                    app.Services.GetRequiredService<IRequestService>());
             }
 
             app.UseHttpsRedirection();
