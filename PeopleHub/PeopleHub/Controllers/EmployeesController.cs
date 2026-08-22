@@ -5,7 +5,7 @@ using PeopleHub.Services;
 namespace PeopleHub.Controllers
 {
     // Base route: /api/employees
-    // This is the CRUD the future Employees page will call.
+    // This is the CRUD the Employees page calls.
     [ApiController]
     [Route("api/[controller]")]
     public class EmployeesController : ControllerBase
@@ -19,11 +19,16 @@ namespace PeopleHub.Controllers
             _employeeService = employeeService;
         }
 
+        // GET /api/employees?keyword=&department=&jobTitle=&gender=&maritalStatus=
+        //                   &minSalary=&maxSalary=&hiredFrom=&hiredTo=
+        //                   &sort=name|salary|hireDate|department|jobTitle|age|code
+        //                   &sortDir=asc|desc&page=1&pageSize=25
+        //
+        // NOTE: this returns a PagedResult, not a bare array — the rows are in
+        // `items`, with `totalCount` / `totalPages` alongside them.
         [HttpGet]
-        public ActionResult<List<Employee>> GetAll()
-        {
-            return Ok(_employeeService.GetAll());
-        }
+        public ActionResult<PagedResult<Employee>> GetAll([FromQuery] EmployeeQuery query) =>
+            Ok(_employeeService.Query(query));
 
         [HttpGet("{id}")]
         public ActionResult<Employee> GetById(int id)

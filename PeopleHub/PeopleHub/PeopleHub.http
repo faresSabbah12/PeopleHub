@@ -1,6 +1,232 @@
-@PeopleHub_HostAddress = http://localhost:5259
+@PeopleHub_HostAddress = https://localhost:7059
 
-GET {{PeopleHub_HostAddress}}/weatherforecast/
+### ---------------------------------------------------------------- Dashboard
+
+### All four top cards in one call
+GET {{PeopleHub_HostAddress}}/api/dashboard/summary
+Accept: application/json
+
+### Hires per year since May 2011
+GET {{PeopleHub_HostAddress}}/api/dashboard/hiring-by-year
+Accept: application/json
+
+### Department breakdown card
+GET {{PeopleHub_HostAddress}}/api/dashboard/headcount-by-department
+Accept: application/json
+
+### Attendance chart, working days only
+GET {{PeopleHub_HostAddress}}/api/dashboard/attendance-trend?days=14
+Accept: application/json
+
+### Who is in / remote / on leave / absent
+GET {{PeopleHub_HostAddress}}/api/dashboard/team-status
+Accept: application/json
+
+### Latest request submissions and approvals
+GET {{PeopleHub_HostAddress}}/api/dashboard/recent-activity?take=8
+Accept: application/json
+
+### ---------------------------------------------------------------- Employees
+
+### Page 1 of 200 employees — rows are in `items`
+GET {{PeopleHub_HostAddress}}/api/employees?page=1&pageSize=10
+Accept: application/json
+
+### Filters combine freely
+GET {{PeopleHub_HostAddress}}/api/employees?department=Engineering&minSalary=1000&sort=salary&sortDir=desc
+Accept: application/json
+
+### Free-text search over name, code, email, phone, department, title
+GET {{PeopleHub_HostAddress}}/api/employees?keyword=ahmad
+Accept: application/json
+
+### One employee
+GET {{PeopleHub_HostAddress}}/api/employees/1
+Accept: application/json
+
+### Create
+POST {{PeopleHub_HostAddress}}/api/employees
+Content-Type: application/json
+
+{
+  "firstName": "Lina",
+  "middleName": "Omar",
+  "lastName": "Haddad",
+  "gender": "Female",
+  "birthDate": "1995-03-14",
+  "hireDate": "2026-01-05",
+  "department": "Finance",
+  "jobTitle": "Accountant",
+  "salary": 780,
+  "phoneNumber": "0791234567",
+  "email": "lina.haddad@peoplehub.com",
+  "maritalStatus": "Single"
+}
+
+### Update (whole object)
+PUT {{PeopleHub_HostAddress}}/api/employees/1
+Content-Type: application/json
+
+{
+  "firstName": "Ahmad",
+  "middleName": "Omar",
+  "lastName": "Khatib",
+  "gender": "Male",
+  "birthDate": "1990-06-02",
+  "hireDate": "2015-04-11",
+  "department": "Engineering",
+  "jobTitle": "Senior Software Engineer",
+  "salary": 1450,
+  "phoneNumber": "0781234567",
+  "email": "ahmad.khatib@peoplehub.com",
+  "maritalStatus": "Married"
+}
+
+### Delete
+DELETE {{PeopleHub_HostAddress}}/api/employees/200
+
+### --------------------------------------------------------------- Attendance
+
+### Newest working day first
+GET {{PeopleHub_HostAddress}}/api/attendance?page=1&pageSize=20
+Accept: application/json
+
+### Latest arrivals (office hours are 09:00-17:00)
+GET {{PeopleHub_HostAddress}}/api/attendance?sort=latestCheckIn&pageSize=20
+Accept: application/json
+
+### Earliest arrivals
+GET {{PeopleHub_HostAddress}}/api/attendance?sort=earliestCheckIn&pageSize=20
+Accept: application/json
+
+### The page's three search fields
+GET {{PeopleHub_HostAddress}}/api/attendance?keyword=Engineering&name=ahmad&employeeCode=2018
+Accept: application/json
+
+### One day, only the late arrivals
+GET {{PeopleHub_HostAddress}}/api/attendance?date=2026-08-17&status=Late
+Accept: application/json
+
+### A date range, aggregated
+GET {{PeopleHub_HostAddress}}/api/attendance/summary?from=2026-08-01&to=2026-08-31
+Accept: application/json
+
+### ----------------------------------------------------------------- Requests
+
+### Defaults to the CURRENT MONTH
+GET {{PeopleHub_HostAddress}}/api/requests
+Accept: application/json
+
+### The boxes at the top of the page (all three status counts, always)
+GET {{PeopleHub_HostAddress}}/api/requests/summary
+Accept: application/json
+
+### Same boxes for today / this year
+GET {{PeopleHub_HostAddress}}/api/requests/summary?period=day
+Accept: application/json
+
+###
+GET {{PeopleHub_HostAddress}}/api/requests/summary?period=year
+Accept: application/json
+
+### The status toggle
+GET {{PeopleHub_HostAddress}}/api/requests?period=year&status=Pending&type=Leave
+Accept: application/json
+
+### One request
+GET {{PeopleHub_HostAddress}}/api/requests/1
+Accept: application/json
+
+### Create — starts as Pending whatever you send
+POST {{PeopleHub_HostAddress}}/api/requests
+Content-Type: application/json
+
+{
+  "employeeId": 1,
+  "type": "Leave",
+  "leaveType": "Annual",
+  "startDate": "2026-09-01",
+  "endDate": "2026-09-05",
+  "reason": "Family vacation"
+}
+
+### Invalid — endDate before startDate, expect 400
+POST {{PeopleHub_HostAddress}}/api/requests
+Content-Type: application/json
+
+{
+  "employeeId": 1,
+  "type": "Leave",
+  "startDate": "2026-09-05",
+  "endDate": "2026-09-01",
+  "reason": "Backwards on purpose"
+}
+
+### Approve / reject
+PATCH {{PeopleHub_HostAddress}}/api/requests/1/status
+Content-Type: application/json
+
+{
+  "status": "Approved",
+  "reviewedBy": "HR Manager"
+}
+
+### Delete
+DELETE {{PeopleHub_HostAddress}}/api/requests/1
+
+### ---------------------------------------------------------------- Financial
+
+### Highest paid first
+GET {{PeopleHub_HostAddress}}/api/financial/salaries?sort=salary&sortDir=desc&pageSize=20
+Accept: application/json
+
+### Totals for EVERYONE the filters matched, not just this page
+GET {{PeopleHub_HostAddress}}/api/financial/summary
+Accept: application/json
+
+### Totals for one department
+GET {{PeopleHub_HostAddress}}/api/financial/summary?department=Engineering
+Accept: application/json
+
+### Payroll split by department
+GET {{PeopleHub_HostAddress}}/api/financial/by-department
+Accept: application/json
+
+### Yearly payroll series + this-year-vs-last-year trend
+GET {{PeopleHub_HostAddress}}/api/financial/payroll-by-year
+Accept: application/json
+
+### ------------------------------------------------------------------ Lookups
+
+GET {{PeopleHub_HostAddress}}/api/lookups/departments
+Accept: application/json
+
+###
+GET {{PeopleHub_HostAddress}}/api/lookups/job-titles?department=Engineering
+Accept: application/json
+
+###
+GET {{PeopleHub_HostAddress}}/api/lookups/departments-with-titles
+Accept: application/json
+
+###
+GET {{PeopleHub_HostAddress}}/api/lookups/request-types
+Accept: application/json
+
+###
+GET {{PeopleHub_HostAddress}}/api/lookups/leave-types
+Accept: application/json
+
+###
+GET {{PeopleHub_HostAddress}}/api/lookups/request-statuses
+Accept: application/json
+
+###
+GET {{PeopleHub_HostAddress}}/api/lookups/attendance-statuses
+Accept: application/json
+
+###
+GET {{PeopleHub_HostAddress}}/api/lookups/work-hours
 Accept: application/json
 
 ###
