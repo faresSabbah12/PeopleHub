@@ -18,5 +18,6 @@
   "STATUS_REJECTED": "Rejected",
   "MODULE_PENDING_TITLE": "{{module}} is on the way",
   "MODULE_PENDING_DESCRIPTION": "This module is part of the PeopleHub roadmap.",
-  "MODULE_PENDING_HINT": "The shell, theme and shared components are ready — the module screens will be added in a later release."
+  "MODULE_PENDING_HINT": "The shell, theme and shared components are ready — the module screens will be added in a later release.",
+  "SOMETHING_WENT_WRONG": "Something went wrong, please try later"
 }
