@@ -1,5 +1,5 @@
 import { useState, type ReactNode } from 'react';
-import { ErrorContext } from './errorContext';
+import { ErrorContext } from './ErrorContext';
 
 interface ErrorProviderProps {
   children: ReactNode;
