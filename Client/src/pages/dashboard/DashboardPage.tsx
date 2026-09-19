@@ -2,17 +2,10 @@ import { Download, UserPlus } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 
 import { PageHeader } from '@/components/common/PageHeader';
-import { StatCard } from '@/components/common/StatCard';
 import { Button } from '@/components/ui/button';
 import { currentUser } from '@/data/currentUser';
 
-import { AttendanceOverviewCard } from './components/AttendanceOverviewCard';
-import { DepartmentBreakdownCard } from './components/DepartmentBreakdownCard';
-import { QuickActionsCard } from './components/QuickActionsCard';
-import { RecentActivityCard } from './components/RecentActivityCard';
-import { TeamStatusCard } from './components/TeamStatusCard';
-import { UpcomingEventsCard } from './components/UpcomingEventsCard';
-import { dashboardStats } from './dashboardData';
+import { CardsSection } from './components/CardsSection';
 
 export function DashboardPage() {
   const { t } = useTranslation('dashboard');
@@ -37,34 +30,7 @@ export function DashboardPage() {
         }
       />
 
-      <div className='grid gap-4 sm:grid-cols-2 xl:grid-cols-4'>
-        {dashboardStats.map((stat) => (
-          <StatCard
-            key={stat.id}
-            label={t(stat.labelKey)}
-            value={stat.value}
-            icon={stat.icon}
-            tone={stat.tone}
-            trend={stat.trend}
-            hint={stat.hintKey ? t(stat.hintKey) : undefined}
-          />
-        ))}
-      </div>
-
-      <div className='grid gap-4 lg:grid-cols-3'>
-        <AttendanceOverviewCard className='lg:col-span-2' />
-        <DepartmentBreakdownCard />
-      </div>
-
-      <div className='grid gap-4 lg:grid-cols-3'>
-        <TeamStatusCard className='lg:col-span-2' />
-        <UpcomingEventsCard />
-      </div>
-
-      <div className='grid gap-4 lg:grid-cols-3'>
-        <RecentActivityCard className='lg:col-span-2' />
-        <QuickActionsCard />
-      </div>
+      <CardsSection />
     </div>
   );
 }

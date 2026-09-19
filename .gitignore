@@ -44,3 +44,8 @@ dist-ssr/
 *.ntvs*
 *.njsproj
 *.sw?
+# =========================
+# Docs
+# =========================
+# Long-form guides kept local to the working copy, not carried in the repo.
+docs/

@@ -18,5 +18,6 @@
   "STATUS_REJECTED": "مرفوض",
   "MODULE_PENDING_TITLE": "{{module}} قيد التطوير",
   "MODULE_PENDING_DESCRIPTION": "هذه الوحدة جزء من خطة تطوير PeopleHub.",
-  "MODULE_PENDING_HINT": "الهيكل العام والمظهر والمكونات المشتركة جاهزة، وستتم إضافة شاشات هذه الوحدة في إصدار لاحق."
+  "MODULE_PENDING_HINT": "الهيكل العام والمظهر والمكونات المشتركة جاهزة، وستتم إضافة شاشات هذه الوحدة في إصدار لاحق.",
+  "SOMETHING_WENT_WRONG": "حدث خطئ و يرجى المحاولة لاحقا."
 }
