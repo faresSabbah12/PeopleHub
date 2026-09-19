@@ -9,7 +9,7 @@ import {
 } from 'lucide-react';
 
 import type { Status } from '@/lib/status';
-import type { StatTone } from '@/components/common/StatCard';
+import type { StatTone } from '@/components/common/InfoCard';
 
 /**
  * Static dashboard data. Labels are translation keys from the `dashboard`

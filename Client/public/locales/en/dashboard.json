@@ -10,7 +10,7 @@
   "STAT_MONTHLY_PAYROLL": "Monthly payroll",
   "STAT_VS_LAST_MONTH": "vs last month",
   "STAT_ATTENDANCE_RATE": "attendance rate",
-  "STAT_PENDING_REQUESTS": "4 requests awaiting approval",
+  "STAT_PENDING_REQUESTS": "requests awaiting approval",
 
   "ATTENDANCE_OVERVIEW": "Attendance overview",
   "ATTENDANCE_OVERVIEW_DESCRIPTION": "Daily attendance rate for the current week.",

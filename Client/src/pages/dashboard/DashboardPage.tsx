@@ -1,4 +1,4 @@
-import { Download, UserPlus } from 'lucide-react';
+import { Download } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 
 import { PageHeader } from '@/components/common/PageHeader';
@@ -17,14 +17,9 @@ export function DashboardPage() {
         description={t('DASHBOARD_SUBTITLE')}
         actions={
           <>
-            <Button variant='outline' size='lg'>
+            <Button variant='default' size='lg'>
               <Download />
               <span className='hidden sm:inline'>{t('EXPORT')}</span>
-            </Button>
-
-            <Button size='lg'>
-              <UserPlus />
-              {t('ADD_EMPLOYEE')}
             </Button>
           </>
         }
