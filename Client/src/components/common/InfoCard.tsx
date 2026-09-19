@@ -12,20 +12,17 @@ const toneStyles: Record<StatTone, string> = {
   info: 'bg-info-subtle text-info',
 };
 
-interface StatCardProps {
+export interface InfoCardProps {
   label: string;
   value: string;
   icon: LucideIcon;
   tone?: StatTone;
-  /** Comparison against the previous period. */
   trend?: { value: string; direction: 'up' | 'down' };
-  /** Short qualifier under the value, e.g. "of 248 employees". */
   hint?: string;
   className?: string;
 }
 
-/** Compact KPI tile for dashboards and module overviews. */
-export function StatCard({
+export function InfoCard({
   label,
   value,
   icon: Icon,
@@ -33,7 +30,7 @@ export function StatCard({
   trend,
   hint,
   className,
-}: StatCardProps) {
+}: InfoCardProps) {
   const TrendIcon = trend?.direction === 'down' ? TrendingDown : TrendingUp;
 
   return (
