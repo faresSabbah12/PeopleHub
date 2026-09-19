@@ -1,15 +1,3 @@
-// const API_BASE = 'https://localhost:7059/api';
-
-// export async function apiGet<T>(endpoint: string): Promise<T> {
-//   const response = await fetch(`${API_BASE}${endpoint}`);
-
-//   if (!response.ok) {
-//     throw new Error(`Request failed: ${response.status}`);
-//   }
-
-//   return response.json();
-// }
-
 const API_BASE = 'https://localhost:7059/api';
 
 export type HttpMethod = 'GET' | 'POST' | 'PUT' | 'PATCH' | 'DELETE';

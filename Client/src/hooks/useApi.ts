@@ -3,10 +3,14 @@
 import { useError } from '@/contexts/error/useError';
 import { useLoading } from '@/contexts/loading/useLoading';
 import { apiRequest, type ApiRequestOptions } from '@/lib/api';
-import { useState } from 'react';
+import { useEffect, useState, type DependencyList } from 'react';
 import { useTranslation } from 'react-i18next';
 
-export function useApi<TResponse, TBody = unknown>() {
+export function useApi<TResponse, TBody = unknown>(
+  endpoint: string,
+  options: ApiRequestOptions<TBody>,
+  deps: DependencyList,
+) {
   const [response, setResponse] = useState<TResponse | null>(null);
   const { startLoading, stopLoading } = useLoading();
   const { showError } = useError();
@@ -29,15 +33,25 @@ export function useApi<TResponse, TBody = unknown>() {
         error instanceof Error ? error.message : t('SOMETHING_WENT_WRONG');
 
       showError(message);
-
-      throw error;
     } finally {
       stopLoading();
     }
   };
 
+  useEffect(() => {
+    (async () => await request(endpoint, options))();
+  }, deps);
+
   return {
-    request,
+    // mutate: request,
     response,
   };
+}
+
+export function useApiQuery<TResponse, TBody = unknown>(
+  endpoint: string,
+  options: ApiRequestOptions<TBody>,
+  deps: DependencyList = [],
+) {
+  return useApi<TResponse, TBody>(endpoint, options, deps).response;
 }
